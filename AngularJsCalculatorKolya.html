@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="AngularJsCalculatorKolyaStyle.css">
+
+
+
+<body>
+
+<div  ng-app="CalcTag" ng-controller="CalcCntr">
+	
+	<p id=header>Angular Js Calculator by Kolya Haisken-De New</p>
+	
+	<input id=idButtonPlus type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEISURBVGhD7dhBSkJRGIbhCzWwBdisRhEZOIi2EBEEzaJphAgtQxFr0rQduBxdSAPdgfaewQEHP8Kv6PmPfC88w3u4nwO59zZKKbVLZ3jE65oXtFFNJ5hiZZjjElV0BWtE9oEq6sIakH2iijQkWhoSLQ2JloZES0OiFW7IKa5x7/QGa0D2Beu6TdKP04K79D4xg3UjpfyhA1cPsA4rbQRXz7AOKu0XrjRkz9xDnmAdVNoPXJ1jAeuwUpZIf0LuLvCOvtMA1o1kE1jXbdLDHQ6aHlGipSHR0pBoaUi0NCRaGhKtW1gDsvQQWEXpw0X6UGCNSI/iB3+K3aUbDPG9Zoyt3ieUUurYapp/KA79Yuf1eToAAAAASUVORK5CYII=" ng-click="evaluate(impCalcString,1)">
+	<input id=idButtonMinus type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACFSURBVGhD7dQhDsJAEEbhFQi4AK6WBIEgXKGiCZdAND0JFsuxOAiGG9C++jUjyCzJ+5Jn/2TMFEmSJEmS9Hc2dKBLA51oS2E7etHcUG86UkhPtbHs7hRypdpQdk8K8ZAfFz5koNpQdg8K2dOHamNZfWl9QmEd3WhqoJHOJEmSJEmSlKGUBem+G6w6PjTxAAAAAElFTkSuQmCC" ng-click="evaluate(impCalcString,2)">
+	<input id=idButtonMultiply type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGmSURBVGhD7ZgxSsRAFIajlXgDESuxsBQ8gI0H0E5FELS09QiKveB23sAbeBg9gGKnoqj/W/ghLm+yeTMvmRHmg69IFt7kyy7JMk2lUqlU/gOr8ARuTY/8WYdHcGN6NBDb8Bn+wG94BT3Zg+9Q5n/CM+iORLxCWaTtNfRAIj5ge7bcLNeYUARNjdEiqFvMCnyB2iJtY2O6IqjE7MIkDqE2XNMa0yeC3sIk5Okkd0Qbrtk3xhIhnsNkLqE2POS8GGvEA1yCLsjFaYuEDMXERCxDV1JjioggsTFFRRBrzD0sLoJYY/o6agTxjskSQbxiskaQ1JgiIkhsTFERRJ5O2sWGfITFRVjfE1S+yWKIjaBFxKRG0KwxXhE0S4x3BB01xhrxpJzrcpQYawTfE3Jx2uchB42JjSBFxKRGkKwxXhEkS8wafIPaApp9/ztZYw5gEpZ9rb4RxBIzgUlswi+oDW9rjSB9Y45hMqewa5MuNoLMi7mDC9AF2UjWYlIjSChGIhahK7MxXhFkNmaQCLIDb+AFdNvGbLEPZcNafs6DRVQqlUql8pem+QVGFHzDJr/5MAAAAABJRU5ErkJggg==" ng-click="evaluate(impCalcString,3)">
+	<input id=idButtonDivide type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAERSURBVGhD7dgtS4NRGMbxZ+hAwSKoQRCHYShiEKNGg2DxAzhYENG2D2G12rRZ/DCLaxoNBgWTxZf/HQ48yF1OGOfc4/rDrx64NnjeGqWUUrPUCoa4bLnANsLUxTN+HV/oI0T2q3sjEvtnQrQHb0ByjRBpSG314A1IzhGiDp7gjZhgGaFax1bLJuaglKqsedhz0UEF7N60gOwWMYZ3CS3lDTvI6hjeYaXdIKtTeAeVdoesNGTKsoecwDuotFtktYYPeIeV8gO7CGW3gf8fEEqx1+N9KKXUdBrhBe8tr7iHPVWHaBXf8O4F5gwh0ge62pqZIbvwBiRXCNESPuGNMIcI0xEeYJ9Ok0cMoJRSSlVW0/wBfGaH8JHoIu4AAAAASUVORK5CYII=" ng-click="evaluate(impCalcString,4)">
+	<input id=idButtonPower type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMMSURBVGhD7drLy01RGMfx1zWUkksZIcVEJiQzJClGSG4jhITCP2CgXMpt5DpQYiBKKMRIJiZiYMBEBq7lFsr99v0NVr3OfvY5z9p77b1Pb++vPpP3rLX3Xuectfdaz3l7+tOHMxHrcAq38RKf8Be/8B6PcRl7sRAj0BUZg524D11wrC84j0UYgNozFofwGdYFFvEQK1HLgHSSzdDXxLqYFO5gGirLONyEdfLUvmIbkkfv0DNYJ63SGQxBkszCO1gnqsM1DEOpTEeV88HrCgahUDQnmvg65TmC6OjudAPWAZvyB0sQFd1irYM17S30EHZFX6lumBd5tARyRU9s6wDd4jemom30sRVddnzEkxy6aXyD1a+I02gbLQCtjh7H0C5DoRWvliBW/xh6U0YhNw9gdfQIA9EFT27Re7mu58FxWMeIsQlmJsHq4BUGooeo9br2IkuhaDD3YLXzug4za2F18Oo0ENEGazaUVbDaeGkum+uwk7A6eHkGIoehjIf1eowZyKTsJPQO5CpC9LS22nitRibPYTX28g7kHJSRsF6PsQuZhEJBUd6BLIOiW7H1eoyDyMRqGKPTQH5gN0K0NLfaxQjn/C8/YTX2CgcdDd3jg/WYD63hQjbAOkaso8jkA6zGXua70xJVX7SvKDvJg33I5BGsxl5hIBNwocVF3EXZT73VdmRS9jvbaY5UYTEy2QOrsVcTA9Gnn0nZ22HdA9H2wIxWqCqMWZ086h7ICeRGBWWrk0fdA5mL3GjyWJ08tIZagI29/laVpxiI3KgMpKq41bmbbEXHlN0nVE2L2+HoGH0qKfbVVVkDd1R9T1n1SOUWorMF1sGa8hraVRbKWVgHrdt3zEPhqLSj26p18LqoYLECpaMfWS7BOknVNE+XI1lUh1L1I9U+wuMV5qCS6PeJN7BOnJLuToUntjcqdKu0r6q4dRFlvEDUcyJFpkBV8RTPG62dtOwo/aNnmagqriKDarExP0loP6HqplaxbReATWQwZkIVQBXPDkAXq2rHfuyA/u/E3Nn1p++kp+cf6AYCIYwgACMAAAAASUVORK5CYII=" ng-click="evaluate(impCalcString,5)">
+	<input id=idButtonSqrt type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHYSURBVGhD7dk/KK1xGMDxg4iSDK7BIEkysFBu3ZRMFoOSlEVJSknZXAMxYLiLTJKyKIMJy91uSQwssiglykD5lxI3/77PcOr09BydM3j9nnq/9VnO+anncTjnvOck4uLi4qKqDt2GRrhqFe+GAbgpF1ewFqmAm5pgLXEIV/2GtcgsXPUP1iItcFMxnqGXuEYe3NQBvYRYg6sWYC3SB1cdQy/xinK4qQp6CbEHVw3CWmQCrlqHtchPuEmeWm+hl7iEvGVx0y/oJcQKXDUJaxF56+6qHeglXlAKN8mwMrReZBuRVYLqDHz2gtYFvYQYQ2QNwRpC++xaYhHWzzQgsjJdRFTC6hT67BkiLZtFRqCrhXV2CZGWzSJ/oRuGdbYTkZbNIk+QC6fUNpHJuS+vHzeG/9ADitTfdAEeoM9Yj9y3NQU9oEj922+FdWYUwVQDa8gL5ECagXVGPmUMql1YgzZD2oe+7wTBle4ZaRo/IJew+r55BFcZrH/6A/Sq25LaEWQb0MO+QZ6Z9O2PKEKQ9UAPnM4Wgq0Q97AG1+TFNeiWYQ2upXtTGUxtsAZPdYTgk09BzmEtkPQHLpqDtUCSPGouqoe1gLhDPtw0DnlkNFdfcMbFxcV9VYnEB5e1WXFu8h+yAAAAAElFTkSuQmCC" ng-click="evaluate(impCalcString,6)">
+	<input id=idButtonEqual type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVGhD7dYhD4FRFIDhj6Doui6qguwnCIqiySbrDJtJfoRCkwR/R7Lh1W85M75r3nd76tlOufcUZmZmZmbvNMQexwwcMEMNoVq445GZEUL1kBpUtiVC5brIGqFc5MNWCNVGalDZxgg3wRmXTGxRh5mZ/UZdzLHJwOs0GaCCUE3ckPpdy9RHqFxvrQVCef1+2P8u0kFqUNmmCFXFDlekBn7b6wU9oQEzMzMzs7+uKJ4bcjUSTDnG/AAAAABJRU5ErkJggg==" ng-click="evaluate(impCalcString,0)">
+	
+	
+	<input id=idInpBox type="text" ng-model="impCalcString"><br>
+	<button id=idButtonReset ng-click="reset()" >Reset</button>
+	<button id=idButtonToggleMode ng-click="toggleMode()" >Toggle Mode</button>
+	<p id=idOutBox>{{CalcOut}}</p>
+	
+	
+	<a id=idIconCredits href="https://icons8.com">Icon pack by Icons8</a>
+	<button id=idButtonTest ng-click="testCases()" >Test</button>
+	<p id=idTestOutputDisp>{{testOutputDisplay}}</p>
+	
+	
+</div>
+
+<script>
+var app = angular.module("CalcTag", []);
+app.controller("CalcCntr", function($scope) {
+	// variable setup
+    $scope.CalcOut = " ";
+	$scope.calcTally = 0;
+	$scope.calcOperator = 1;
+	$scope.showOutput = true;
+	$scope.testOutputDisplay = "";
+	
+	//this function is called when an operator button is pressed
+	$scope.evaluate = function(inp, inpOperator) {
+		$scope.impCalcString = null;
+		$scope.CalcIn = inp;
+		
+		//check if valid input
+		if ($scope.isValidInp(inp)) {
+			
+			//reset after equal operator
+			if ($scope.calcOperator == 0)
+			{
+				$scope.calcTally = 0;
+				$scope.calcOperator = 1;
+			}
+			
+			
+			
+			//test for operator
+			switch($scope.calcOperator) {
+			case 1:
+				$scope.calcTally = $scope.calcTally + Number(inp);
+				break;
+			case 2:
+				$scope.calcTally = $scope.calcTally - Number(inp);
+				break;
+			case 3:
+				$scope.calcTally = $scope.calcTally * Number(inp);
+				break;
+			case 4:
+				$scope.calcTally = $scope.calcTally / Number(inp);
+				break;
+			case 5:
+				$scope.calcTally = Math.pow($scope.calcTally,Number(inp));
+				break;
+			case 6:
+				$scope.calcTally = Math.sqrt($scope.calcTally);
+				break;
+			case 0:
+				
+				break;
+			}
+			
+			$scope.calcOperator = inpOperator;
+			
+			if (inpOperator == 6) {
+				$scope.calcTally = Math.sqrt($scope.calcTally);
+				$scope.calcOperator = 0;
+			}
+			
+			//decide to display output
+			if ($scope.showOutput || $scope.calcOperator == 0) {
+				$scope.CalcOut = $scope.calcTally;
+			}
+			else {
+				$scope.CalcOut = " ";
+			}
+			
+			
+			
+			
+			
+			
+		}
+		else
+		{
+			$scope.CalcOut = "No Valid Input";
+		}
+	}
+	
+	//resets everything
+	$scope.reset = function() {
+		$scope.CalcOut = 0;
+		$scope.calcTally = 0;
+		$scope.calcOperator = 1;
+		$scope.CalcOut = " ";
+	}
+	
+	//checks if number input is valid
+	$scope.isValidInp = function(inp) {
+		inp = String(inp);
+		var doesMatch = inp.match(/^[0-9]+[.]?[0-9]*$/);
+		return doesMatch;
+	}
+	
+	//toggles display mode
+	$scope.toggleMode = function() {
+		$scope.showOutput = !$scope.showOutput;
+	}
+	
+	//test cases
+	$scope.testCases = function() {
+		$scope.reset();
+		var successes = 0;
+		var failures = 0;
+		//test cases in the form of [[input commands],expected output]
+		var testCasesArray = [
+			[['$scope.evaluate(4,1)','$scope.evaluate(5,0)'],9],
+			[['$scope.evaluate(5,2)','$scope.evaluate(4,0)'],1],
+			[['$scope.evaluate(4,3)','$scope.evaluate(5,0)'],20],
+			[['$scope.evaluate(20,4)','$scope.evaluate(5,0)'],4],
+			[['$scope.evaluate(2,5)','$scope.evaluate(3,0)'],8],
+			[['$scope.evaluate(9,6)'],3],
+			[['$scope.evaluate(5,1)','$scope.evaluate(4,3)','$scope.evaluate(2,0)'],18]
+		]
+		
+		//test for success
+		for (var i in testCasesArray) {
+			var testSucceded = $scope.test(testCasesArray[i][0],testCasesArray[i][1]);
+			if (testSucceded) {
+				successes++;
+			}
+			else{
+				failures++;
+				console.log(i, testCasesArray[i]);
+			}
+		}
+		
+		$scope.testOutputDisplay = "Passed " + successes + " and Failed " + failures;
+		
+		$scope.reset();
+	}
+	
+	//test logic
+	$scope.test = function(commandArray, Output) {
+		$scope.reset();
+		for (var i in commandArray) {
+			eval(commandArray[i]);
+		}
+		if ($scope.calcTally == Output)
+		{
+			return true;
+		}
+		return false;
+		
+	}
+	
+	
+	
+});
+
+
+</script>
+
+
+
+</body>
+
+</html>
